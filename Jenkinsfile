@@ -1,4 +1,3 @@
-Jenkins File:
 pipeline {
   agent any
 
@@ -12,7 +11,6 @@ pipeline {
 
     stage('Run Tests') {
       steps {
-        // Generate HTML report explicitly
         sh 'npx playwright test --reporter=html'
       }
     }
@@ -20,10 +18,8 @@ pipeline {
 
   post {
     always {
-      // Archive test-related artifacts
       archiveArtifacts artifacts: 'playwright-report/**, test-results/**, screenshots/**, videos/**, traces/**', allowEmptyArchive: true
 
-      // Publish HTML test report
       publishHTML (target: [
         allowMissing: true,
         alwaysLinkToLastBuild: true,
@@ -35,3 +31,4 @@ pipeline {
     }
   }
 }
+
