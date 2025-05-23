@@ -1,6 +1,3 @@
-Install dependencies:
-npx playwright install --with-deps
-
 Jenkins File:
 pipeline {
   agent any
